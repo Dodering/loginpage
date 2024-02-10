@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #102038;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+        }
+
+        .background {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .background .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: moveShape 20s linear infinite alternate, floatCircle 6s ease-in-out infinite;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(
+            #1e3c72,
+            #2a5298
+            );
+            width: 400px;
+            height: 400px;
+            top: 20%;
+            left: 20%;
+        }
+
+        .shape:last-child {
+            background: linear-gradient(
+            to right,
+            #ec6f66,
+            #f3a183
+            );
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            right: 20%;
+        }
+
+        @keyframes moveShape {
+            0% {
+                transform: translate(-10px, -10px);
+            }
+
+            100% {
+                transform: translate(10px, 10px);
+            }
+        }
+
+        @keyframes floatCircle {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Styles for stars */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="1" fill="%23fff" /%3E%3C/svg%3E');
+            z-index: -1;
+            animation: starsFade 50s linear infinite;
+        }
+
+        @keyframes starsFade {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        .stars:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="1" fill="%23fff" /%3E%3C/svg%3E');
+            z-index: -1;
+            animation: starsMove 100s linear infinite;
+        }
+
+        @keyframes starsMove {
+            from {
+                transform: translateX(-50%) translateY(-50%) scale(1.5);
+            }
+            to {
+                transform: translateX(-50%) translateY(-50%) scale(2.5);
+            }
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        form h3 {
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            height: 40px;
+            width: 100%;
+            padding: 0 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 0;
+            margin-top: 20px;
+            font-size: 18px;
+            background-color: #f3a183;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f88e67;
+        }
+
+        .forgot-password a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .social {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social div {
+            padding: 10px;
+            margin: 0 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .social div:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .social i {
+            margin-right: 4px;
+        }
+
+        .google,
+        .facebook {
+            width: 180px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="container">
+        <form>
+            <h3>Login</h3>
+            <label for="username">Email</label>
+            <input type="text" placeholder="Enter your email" id="username">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter your password" id="password">
+            <button>Log In</button>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="social">
+                <div class="google"><i class="fab fa-google"></i> Google</div>
+                <div class="facebook"><i class="fab fa-facebook"></i> Facebook</div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
